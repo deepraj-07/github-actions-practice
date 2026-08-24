@@ -122,10 +122,10 @@ jobs:
           cat > scan.json <<EOF
           {
             "severity": "$SEVERITY",
-            "deep_scan": "$DEEP_SCAN",
+            "deep_scan": $DEEP_SCAN,
             "actor": "$ACTOR",
             "run_number": "$RUN_NUMBER",
-            "time_utc": "$(date -u)"
+            "time_utc": "$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
           }
           EOF
 
