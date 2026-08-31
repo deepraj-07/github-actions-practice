@@ -1,7 +1,7 @@
 name: Working with Artifacts
 
 on:
-  workflow_dispatch:
+    workflow_dispatch
 
 env:
   build-artifact-key: app-${{ github.sha }} #app-28374028fasdfads
