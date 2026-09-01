@@ -3,10 +3,6 @@ name: Incident Switchboard
 run-name: Incident Switchboard | ${{ inputs.severity == 'low' && 'LOW' || inputs.severity == 'medium' && 'MEDIUM' || inputs.severity == 'high' && 'HIGH' || 'AUTO' }} ${{ inputs.deep_scan && 'SCAN' || '' }}
 
 on:
-  push:
-    branches:
-      - main
-
   pull_request:
     branches:
       - main
@@ -77,7 +73,6 @@ jobs:
         run: |
           echo "High severity incident."
 
-
   tests:
     needs: triage
     if: inputs.skip_tests != true
@@ -99,7 +94,6 @@ jobs:
       - name: Run tests
         working-directory: app
         run: npm test
-
 
   scan:
     needs: triage
@@ -135,7 +129,6 @@ jobs:
         run: |
           echo "Severity: $(jq -r '.severity' scan.json)"
           echo "Actor: $(jq -r '.actor' scan.json)"
-
 
   report:
     needs:
